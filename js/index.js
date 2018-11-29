@@ -35,9 +35,7 @@ var h5 = new Vue({
 		bIndexV: false,
 		bShareV: false,
 		bShareCtrl: true,
-		oMusicBtnStyle: {
-			background: 'url(images/global/music-open.png)',
-		},
+		oMusicStatus: 'i-music-on',
 	},
 	methods: {
 		showShare: function (cancel) {
@@ -50,10 +48,10 @@ var h5 = new Vue({
 			let audio = document.getElementById('music');
 			if (audio.paused) {
 				audio.play();
-				this.oMusicBtnStyle.background = 'url(images/global/music-open.png)';
+				this.oMusicStatus = 'i-music-on';
 			} else {
 				audio.pause();
-				this.oMusicBtnStyle.background = 'url(images/global/music-close.png)';
+				this.oMusicStatus = 'i-music-off';
 			}
 		},
 	},

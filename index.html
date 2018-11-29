@@ -9,6 +9,7 @@
 	<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script> -->
 	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/preloadjs@1.0.1/lib/preloadjs.min.js"></script>
+	<link rel="stylesheet" href="//at.alicdn.com/t/font_853029_7ccn5fj00qb.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
 	<link rel="stylesheet" href="css/basic.css">
 	<link rel="stylesheet" href="css/index.css">
@@ -26,7 +27,7 @@
 		<!-- 分享页 -->
 		<transition name="fade">
 			<div v-show="bShareV" class="page--share" @click="bShareCtrl?bShareV=false:null">
-				<img src="images/global/share.png">
+				<img src="images/share.png">
 			</div>
 		</transition>
 
@@ -39,7 +40,7 @@
 			</div>
 		</transition>
 
-		<button class="btn--music" :style="oMusicBtnStyle" @click="toggleMusic"></button>
+		<button class="btn--music iconfont" :class="oMusicStatus" @click="toggleMusic"></button>
 	</div>
 </body>
 <script src="js/index.js"></script>

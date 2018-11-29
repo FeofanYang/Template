@@ -70,6 +70,10 @@ img {
 	white-space: nowrap;
 }
 
+.iconfont {
+	font-size: unset;
+}
+
 /* #vue */
 
 .fade-enter-active, .fade-leave-active {
@@ -115,9 +119,7 @@ img {
 	position: absolute;
 	left: .2rem;
 	bottom: .2rem;
-	width: .5rem;
-	height: .5rem;
-	background-size: 100% 100% !important;
+	font-size: .5rem;
 	z-index: 2;
 }
 
@@ -125,7 +127,7 @@ img {
 	position: absolute;
 	left: 50%;
 	bottom: .2rem;
-	width: .5rem;
+	font-size: .5rem;
 	margin-left: -.25rem;
 	animation: fadeInUp 1s infinite both;
 }
