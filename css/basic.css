@@ -1,0 +1,146 @@
+/* #reset */
+
+* {
+	margin: 0;
+	padding: 0;
+	outline: 0;
+	-webkit-tap-highlight-color: transparent;
+}
+
+*, :after, :before {
+	box-sizing: border-box;
+}
+
+body {
+	width: 100%;
+	height: 100%;
+	font-family: "Chinese Quote", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+	font-size: .26rem;
+	background: #fff;
+	-webkit-overflow-scrolling: touch;
+}
+
+h1, h2, h3, h4, h5, h6, p, ul, ol, li, button, input, textarea, select {
+	font-size: 100%;
+}
+
+ul, ol, li {
+	list-style: none;
+}
+
+button, input, textarea, select {
+	border: 0;
+	font-family: "Chinese Quote", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+	background-color: transparent;
+	-webkit-appearance: none;
+}
+
+a {
+	text-decoration: none;
+	color: unset;
+}
+
+img {
+	border: 0;
+}
+
+/* #basic */
+
+[hidden] {
+	display: none;
+}
+
+[class*="page--"] {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.centerEl {
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%, 0);
+}
+
+.longText {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+/* #vue */
+
+.fade-enter-active, .fade-leave-active {
+	transition: opacity .5s;
+}
+
+.fade-enter, .fade-leave-to {
+	opacity: 0;
+}
+
+/* #widget */
+
+.page--load {
+	background-color: #fff;
+	z-index: 100;
+}
+
+.load__container {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.load__container p {
+	margin-top: .1rem;
+	text-align: center;
+}
+
+.page--share {
+	background-color: rgba(0, 0, 0, .7);
+}
+
+.page--share img {
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 100%;
+	animation: rotateInUpLeft 1s both;
+}
+
+.btn--music {
+	position: absolute;
+	left: .2rem;
+	bottom: .2rem;
+	width: .5rem;
+	height: .5rem;
+	background-size: 100% 100% !important;
+	z-index: 2;
+}
+
+.swiper-wrapper .arrow {
+	position: absolute;
+	left: 50%;
+	bottom: .2rem;
+	width: .5rem;
+	margin-left: -.25rem;
+	animation: fadeInUp 1s infinite both;
+}
+
+/* #animate */
+
+.am--flash {
+	animation-name: am--flash;
+}
+
+@keyframes am--flash {
+	0%, 50%, 100% {
+		opacity: 0;
+	}
+	25%, 75% {
+		opacity: 1;
+	}
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<meta name="format-detection" content="telephone=no">
+	<title></title>
+	<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script> -->
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/preloadjs@1.0.1/lib/preloadjs.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
+	<link rel="stylesheet" href="css/basic.css">
+	<link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+	<audio src="media/music.mp3" id="music" preload autoplay loop></audio>
+	<div id="h5">
+		<!-- 首页 -->
+		<transition name="fade">
+			<div v-show="bIndexV" class="page--index">
+			</div>
+		</transition>
+
+		<!-- 分享页 -->
+		<transition name="fade">
+			<div v-show="bShareV" class="page--share" @click="bShareCtrl?bShareV=false:null">
+				<img src="images/global/share.png">
+			</div>
+		</transition>
+
+		<!-- 加载页 -->
+		<transition name="fade">
+			<div v-show="bLoadV" class="page--load">
+				<div class="load__container">
+					<p><span v-text="nLoadNum"></span>%</p>
+				</div>
+			</div>
+		</transition>
+
+		<button class="btn--music" :style="oMusicBtnStyle" @click="toggleMusic"></button>
+	</div>
+</body>
+<script src="js/index.js"></script>
+
+</html>
