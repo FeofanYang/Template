@@ -54,6 +54,18 @@ var h5 = new Vue({
 				this.oMusicStatus = 'i-music-off';
 			}
 		},
+		inputRepair: function () {
+			let timer, pos, distance = 1;
+			timer = setInterval(function () {
+				pos = document.documentElement.scrollTop || document.body.scrollTop;
+				pos -= distance;
+				window.scrollTo(0, pos);
+				pos += distance;
+				window.scrollTo(0, pos);
+				clearInterval(timer);
+			}, 1);
+			console.log('repair done');
+		},
 	},
 	mounted() {
 		let that = this;

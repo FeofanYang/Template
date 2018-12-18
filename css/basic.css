@@ -46,10 +46,6 @@ img {
 
 /* #basic */
 
-[hidden] {
-	display: none;
-}
-
 [class*="page--"] {
 	position: absolute;
 	top: 0;
@@ -82,6 +78,10 @@ img {
 
 .fade-enter, .fade-leave-to {
 	opacity: 0;
+}
+
+.van-dialog__header {
+	padding: 15px;
 }
 
 /* #widget */
