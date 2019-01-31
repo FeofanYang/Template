@@ -22,45 +22,6 @@ document.body.addEventListener('touchmove', function (e) {
 })();
 
 // Vue
-Vue.component('pImg', {
-	template: `<img v-if="obj" :src="obj.src" :style="setStyle"></img>`,
-	props: {
-		obj: Object,
-		origin: {
-			type: Boolean,
-			default: false
-		},
-		center: {
-			type: Boolean,
-			default: false
-		},
-		middle: {
-			type: Boolean,
-			default: false
-		}
-	},
-	computed: {
-		setStyle: function () {
-			let style = {};
-			if (!this.origin) {
-				style.width = this.obj.width / 100 + 'rem';
-			}
-			if (this.center) {
-				style.position = 'absolute';
-				style.left = '50%';
-				style.width = this.obj.width / 100 + 'rem';
-				style.marginLeft = -this.obj.width / 200 + 'rem';
-			}
-			if (this.middle) {
-				style.position = 'absolute';
-				style.top = '50%';
-				style.height = this.obj.height / 100 + 'rem';
-				style.marginTop = -this.obj.height / 200 + 'rem';
-			}
-			return style;
-		}
-	}
-});
 var h5 = new Vue({
 	el: '#h5',
 	data: {
@@ -68,17 +29,9 @@ var h5 = new Vue({
 		bLoadV: true,
 		nLoadNum: 0,
 		bIndexV: false,
-		bShareV: false,
-		bShareCtrl: true,
 		oMusicStatus: 'i-music-on',
 	},
 	methods: {
-		showShare: function (cancel) {
-			if (typeof cancel === 'boolean' && cancel === false) {
-				this.bShareCtrl = false;
-			}
-			this.bShareV = true;
-		},
 		toggleMusic: function () {
 			let audio = document.getElementById('music');
 			if (audio.paused) {

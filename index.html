@@ -24,13 +24,6 @@
 			</div>
 		</transition>
 
-		<!-- 分享页 -->
-		<transition name="fade">
-			<div v-show="bShareV" class="page--share" @click="bShareCtrl?bShareV=false:null">
-				<img src="images/share.png">
-			</div>
-		</transition>
-
 		<!-- 加载页 -->
 		<transition name="fade">
 			<div v-show="bLoadV" class="page--load">
@@ -43,6 +36,7 @@
 		<button class="btn--music iconfont" :class="oMusicStatus" @click="toggleMusic"></button>
 	</div>
 </body>
+<script src="js/components.js"></script>
 <script src="js/index.js"></script>
 
 </html>
