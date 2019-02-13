@@ -1,6 +1,5 @@
 // 图片组件
-Vue.component('f-img', {
-	template: `<img v-if="image" :src="image.src" :style="setStyle"></img>`,
+Vue.component('base-img', {
 	props: {
 		image: Object,
 		origin: { type: Boolean, default: false },
@@ -27,23 +26,15 @@ Vue.component('f-img', {
 			}
 			return style;
 		}
-	}
+	},
+	template: `<img v-if="image" :src="image.src" :style="setStyle"></img>`
 });
 // 弹出层组件
 Vue.component('popup', {
-	template: `
-		<transition name="fade">
-			<div v-if="curVisible" @click="setVisible=false" class="mask--popup">
-				<div :style="wrapStyle">
-					<img v-if="image" :src="ImageSrc" style="width:100%;">
-					<div v-if="text" v-text="text" style="margin-top:.1rem;color:#fff;text-align:center;"></div>
-				</div>
-			</div>
-		</transition>
-	`,
 	props: {
 		visible: { type: Boolean, default: true },
-		closable: { type: Boolean, default: true },
+		closeOnClickOverlay: { type: Boolean, default: true },
+		width: { type: [String, Number], default: '4rem' },
 		position: {
 			default: 5,
 			validator: function (value) {
@@ -51,29 +42,16 @@ Vue.component('popup', {
 			}
 		},
 		offset: { type: [String, Number], default: 0 },
-		width: { type: [String, Number], default: '4rem' },
 		image: { type: [Object, String] },
-		text: { type: String }
-	},
-	data() {
-		return {
-			setVisible: null,
-		}
+		text: { type: String },
 	},
 	computed: {
-		curVisible: function () {
-			if (typeof this.setVisible === 'boolean' && this.closable) {
-				return this.setVisible;
-			} else {
-				return this.visible;
-			}
-		},
 		wrapStyle: function () {
 			let style = {
 				position: 'absolute',
 				width: this.width
 			}
-			if (typeof this.image === 'boolean') {
+			if (typeof this.image === 'object') {
 				style.width = this.image.width / 100 + 'rem';
 			}
 			let offset = this.offset;
@@ -123,12 +101,37 @@ Vue.component('popup', {
 			return style;
 		},
 		ImageSrc: function () {
-			if (typeof this.image === 'boolean') {
+			if (typeof this.image === 'object') {
 				return this.image.src;
 			}
 			if (typeof this.image === 'string') {
 				return this.image;
 			}
+		},
+		textStyle: function () {
+			let style = {
+				marginTop: '.1rem',
+				textAlign: 'center',
+				color: '#fff',
+			}
+			return style;
 		}
-	}
+	},
+	methods: {
+		clickOverlay() {
+			if (this.closeOnClickOverlay === true) {
+				this.$emit('update:visible', false);
+			}
+		}
+	},
+	template: `
+		<transition name="fade">
+			<div v-if="visible" @click="clickOverlay" style="background-color:rgba(0,0,0,.7);" class="page--popup">
+				<div :style="wrapStyle">
+					<img v-if="image" :src="ImageSrc" style="width:100%;">
+					<div v-if="text" v-text="text" :style="textStyle"></div>
+				</div>
+			</div>
+		</transition>
+	`
 });

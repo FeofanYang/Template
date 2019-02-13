@@ -31,30 +31,6 @@ var h5 = new Vue({
 		bIndexV: false,
 		oMusicStatus: 'i-music-on',
 	},
-	methods: {
-		toggleMusic: function () {
-			let audio = document.getElementById('music');
-			if (audio.paused) {
-				audio.play();
-				this.oMusicStatus = 'i-music-on';
-			} else {
-				audio.pause();
-				this.oMusicStatus = 'i-music-off';
-			}
-		},
-		inputRepair: function () {
-			let timer, pos, distance = 1;
-			timer = setInterval(function () {
-				pos = document.documentElement.scrollTop || document.body.scrollTop;
-				pos -= distance;
-				window.scrollTo(0, pos);
-				pos += distance;
-				window.scrollTo(0, pos);
-				clearInterval(timer);
-			}, 1);
-			console.log('repair done');
-		},
-	},
 	mounted() {
 		let that = this;
 		let queue = new createjs.LoadQueue();
@@ -80,5 +56,29 @@ var h5 = new Vue({
 			{ 'id': 'BGM', 'src': 'media/music.mp3' },
 		];
 		queue.loadManifest(manifest);
+	},
+	methods: {
+		toggleMusic: function () {
+			let audio = document.getElementById('music');
+			if (audio.paused) {
+				audio.play();
+				this.oMusicStatus = 'i-music-on';
+			} else {
+				audio.pause();
+				this.oMusicStatus = 'i-music-off';
+			}
+		},
+		inputRepair: function () {
+			let timer, pos, distance = 1;
+			timer = setInterval(function () {
+				pos = document.documentElement.scrollTop || document.body.scrollTop;
+				pos -= distance;
+				window.scrollTo(0, pos);
+				pos += distance;
+				window.scrollTo(0, pos);
+				clearInterval(timer);
+			}, 1);
+			console.log('repair done');
+		},
 	},
 });
