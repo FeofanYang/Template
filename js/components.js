@@ -43,7 +43,18 @@ Vue.component('popup', {
 		},
 		offset: { type: [String, Number], default: 0 },
 		image: { type: [Object, String] },
-		text: { type: String },
+		text: { type: [String, Number] },
+		color: { type: String, default: '#fff' },
+		background: { type: String, default: 'rgba(0,0,0,.7)' },
+	},
+	data() {
+		return {
+			textStyle: {
+				marginTop: '.1rem',
+				textAlign: 'center',
+				color: this.color
+			}
+		}
 	},
 	computed: {
 		wrapStyle: function () {
@@ -108,14 +119,6 @@ Vue.component('popup', {
 				return this.image;
 			}
 		},
-		textStyle: function () {
-			let style = {
-				marginTop: '.1rem',
-				textAlign: 'center',
-				color: '#fff',
-			}
-			return style;
-		}
 	},
 	methods: {
 		clickOverlay() {
@@ -126,7 +129,7 @@ Vue.component('popup', {
 	},
 	template: `
 		<transition name="fade">
-			<div v-if="visible" @click="clickOverlay" style="background-color:rgba(0,0,0,.7);" class="page--popup">
+			<div v-if="visible" @click="clickOverlay" :style="{backgroundColor:background}" class="page--popup">
 				<div :style="wrapStyle">
 					<img v-if="image" :src="ImageSrc" style="width:100%;">
 					<div v-if="text" v-text="text" :style="textStyle"></div>
