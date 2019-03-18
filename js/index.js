@@ -33,6 +33,22 @@ document.body.addEventListener(
   );
 })();
 
+// 音乐控制按钮
+function toggleMusic(el) {
+  let audio = document.getElementById('music');
+  if (audio.paused) {
+    audio.play();
+    if (el.classList) el.classList.add('i-music-on');
+    else el.className += ' i-music-on';
+    el.classList.remove('i-music-off');
+  } else {
+    audio.pause();
+    if (el.classList) el.classList.add('i-music-off');
+    else el.className += ' i-music-off';
+    el.classList.remove('i-music-on');
+  }
+}
+
 // Vue
 var h5 = new Vue({
   el: '#h5',
@@ -40,46 +56,35 @@ var h5 = new Vue({
     oImg: {},
     bLoadV: true,
     nLoadNum: 0,
-    bIndexV: false,
-    oMusicStatus: 'i-music-on'
+    bIndexV: false
   },
   mounted() {
-    let that = this;
     let queue = new createjs.LoadQueue();
-    queue.on('progress', function(e) {
-      that.nLoadNum = parseInt(e.progress * 100);
+    let manifest = [
+      // 所有需要预加载的资源
+      { src: 'media/music.mp3' }
+    ];
+    queue.loadManifest(manifest);
+    queue.on('progress', e => {
+      this.nLoadNum = parseInt(e.progress * 100);
     });
-    queue.on('fileload', function(target) {
+    queue.on('fileload', target => {
       if (target.item.type === 'image') {
-        that.oImg[target.item.id] = {
+        this.oImg[target.item.id] = {
+          id: target.item.id,
           src: target.item.src,
           width: target.result.width,
           height: target.result.height
         };
       }
     });
-    queue.on('complete', function() {
+    queue.on('complete', () => {
       // 显示首页
-      that.bLoadV = false;
-      that.bIndexV = true;
+      this.bLoadV = false;
+      this.bIndexV = true;
     });
-    let manifest = [
-      // 所有需要预加载的资源
-      { id: 'BGM', src: 'media/music.mp3' }
-    ];
-    queue.loadManifest(manifest);
   },
   methods: {
-    toggleMusic: function() {
-      let audio = document.getElementById('music');
-      if (audio.paused) {
-        audio.play();
-        this.oMusicStatus = 'i-music-on';
-      } else {
-        audio.pause();
-        this.oMusicStatus = 'i-music-off';
-      }
-    },
     inputRepair: function() {
       let timer,
         pos,
