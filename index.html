@@ -1,34 +1,33 @@
-<!DOCTYPE>
+<!DOCTYPE >
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-		<meta name="format-detection" content="telephone=no">
-		<title></title>
-		<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script> -->
-		<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/preloadjs@1.0.1/lib/preloadjs.min.js"></script>
-		<link rel="stylesheet" href="//at.alicdn.com/t/font_853029_7ccn5fj00qb.css">
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
-		<link rel="stylesheet" href="css/basic.css">
-		<link rel="stylesheet" href="css/index.css">
-	</head>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta name="format-detection" content="telephone=no" />
+    <title></title>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/preloadjs@1.0.1/lib/preloadjs.min.js"></script>
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_853029_7ccn5fj00qb.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css" />
+    <link rel="stylesheet" href="css/basic.css" />
+    <link rel="stylesheet" href="css/index.css" />
+  </head>
 
-	<body>
-		<audio src="media/music.mp3" id="music" preload autoplay loop></audio>
-		<div id="h5">
-			<!-- 首页 -->
-			<transition name="fade">
-				<div v-show="bIndexV" class="page--index">
-				</div>
-			</transition>
+  <body>
+    <audio src="media/music.mp3" id="music" preload autoplay loop></audio>
+    <div id="h5">
+      <!-- 首页 -->
+      <transition name="fade">
+        <div v-show="bIndexV" class="page--index"></div>
+      </transition>
 
-			<!-- 加载页 -->
-			<popup :visible.sync="bLoadV" :close-on-click-overlay="false" :text="nLoadNum + '%'" :color="'#000'" :background="'#fff'" class="page--load"></popup>
+      <!-- 加载页 -->
+      <popup :visible.sync="bLoadV" :close-on-click-overlay="false" :text="nLoadNum + '%'" :color="'#000'" :background="'#fff'" class="page--load"></popup>
 
-			<button class="btn--music iconfont" :class="oMusicStatus" @click="toggleMusic"></button>
-		</div>
-	</body>
-	<script src="js/components.js"></script>
-	<script src="js/index.js"></script>
+      <button class="btn--music iconfont" :class="oMusicStatus" @click="toggleMusic"></button>
+    </div>
+  </body>
+  <script src="js/components.js"></script>
+  <script src="js/index.js"></script>
 </html>

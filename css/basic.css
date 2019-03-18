@@ -1,136 +1,141 @@
 /* #reset */
-
 * {
-	margin: 0;
-	padding: 0;
-	outline: 0;
-	-webkit-tap-highlight-color: transparent;
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  -webkit-tap-highlight-color: transparent;
 }
-
-*, :after, :before {
-	box-sizing: border-box;
+*,
+:after,
+:before {
+  box-sizing: border-box;
 }
-
 body {
-	width: 100%;
-	height: 100%;
-	font-family: "Chinese Quote", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-	font-size: .26rem;
-	background: #fff;
-	-webkit-overflow-scrolling: touch;
+  width: 100%;
+  height: 100%;
+  font-family: 'Chinese Quote', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  font-size: 0.26rem;
+  background: #fff;
+  -webkit-overflow-scrolling: touch;
 }
-
-h1, h2, h3, h4, h5, h6, p, ul, ol, li, button, input, textarea, select {
-	font-size: 100%;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+li,
+button,
+input,
+textarea,
+select {
+  font-size: 100%;
 }
-
-ul, ol, li {
-	list-style: none;
+ul,
+ol,
+li {
+  list-style: none;
 }
-
-button, input, textarea, select {
-	border: 0;
-	font-family: "Chinese Quote", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-	background-color: transparent;
-	-webkit-appearance: none;
+button,
+input,
+textarea,
+select {
+  border: 0;
+  font-family: 'Chinese Quote', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  background-color: transparent;
+  -webkit-appearance: none;
 }
-
 a {
-	text-decoration: none;
-	color: unset;
+  text-decoration: none;
+  color: unset;
 }
-
 img {
-	border: 0;
+  border: 0;
 }
 
 /* #basic */
 
-[class*="page--"] {
-	position: absolute;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	overflow: hidden;
+[class*='page--'] {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
-
 .centerEl {
-	position: absolute;
-	left: 50%;
-	transform: translate(-50%, 0);
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
 }
-
 .longText {
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
-
 .iconfont {
-	font-size: unset;
+  font-size: unset;
 }
 
 /* #vue */
-
-.fade-enter-active, .fade-leave-active {
-	transition: opacity .5s;
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
 }
-
-.fade-enter, .fade-leave-to {
-	opacity: 0;
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 
 .van-dialog__header {
-	padding: 15px;
+  padding: 15px;
 }
 
 /* #widget */
-
 .page--load {
-	background-color: #fff;
-	z-index: 100;
+  background-color: #fff;
+  z-index: 100;
 }
-
 .load__container {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
-
 .load__container p {
-	margin-top: .1rem;
-	text-align: center;
+  margin-top: 0.1rem;
+  text-align: center;
 }
-
 .btn--music {
-	position: absolute;
-	left: .2rem;
-	bottom: .2rem;
-	font-size: .5rem;
-	z-index: 2;
+  position: absolute;
+  left: 0.2rem;
+  bottom: 0.2rem;
+  font-size: 0.5rem;
+  z-index: 2;
 }
-
 .swiper-wrapper .arrow {
-	position: absolute;
-	left: 50%;
-	bottom: .2rem;
-	font-size: .5rem;
-	margin-left: -.25rem;
-	animation: fadeInUp 1s infinite both;
+  position: absolute;
+  left: 50%;
+  bottom: 0.2rem;
+  font-size: 0.5rem;
+  margin-left: -0.25rem;
+  animation: fadeInUp 1s infinite both;
 }
 
 /* #animate */
-
 .am--flash {
-	animation-name: am--flash;
+  animation-name: am--flash;
 }
-
 @keyframes am--flash {
-	0%, 50%, 100% {
-		opacity: 0;
-	}
-	25%, 75% {
-		opacity: 1;
-	}
+  0%,
+  50%,
+  100% {
+    opacity: 0;
+  }
+  25%,
+  75% {
+    opacity: 1;
+  }
 }
