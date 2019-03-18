@@ -57,7 +57,6 @@ img {
 }
 
 /* #basic */
-
 [class*='page--'] {
   position: absolute;
   top: 0;
@@ -65,18 +64,43 @@ img {
   height: 100%;
   overflow: hidden;
 }
-.centerEl {
+.iconfont {
+  font-size: unset;
+}
+.btn--music {
+  position: absolute;
+  left: 0.2rem;
+  bottom: 0.2rem;
+  font-size: 0.5rem;
+  z-index: 2;
+}
+.btn--arrow {
+  position: absolute;
+  left: 50%;
+  bottom: 0.2rem;
+  font-size: 0.5rem;
+  margin-left: -0.25rem;
+  animation: am--fadeInUp 1s infinite both;
+}
+
+/* common */
+.el--center {
   position: absolute;
   left: 50%;
   transform: translate(-50%, 0);
 }
-.longText {
+.el--middle {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+.el--center.el--middle {
+  transform: translate(-50%, -50%);
+}
+.ellipsis {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-}
-.iconfont {
-  font-size: unset;
 }
 
 /* #vue */
@@ -92,36 +116,8 @@ img {
 .van-dialog__header {
   padding: 15px;
 }
-
-/* #widget */
-.page--load {
-  background-color: #fff;
-  z-index: 100;
-}
-.load__container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-.load__container p {
-  margin-top: 0.1rem;
-  text-align: center;
-}
-.btn--music {
-  position: absolute;
-  left: 0.2rem;
-  bottom: 0.2rem;
-  font-size: 0.5rem;
-  z-index: 2;
-}
-.swiper-wrapper .arrow {
-  position: absolute;
-  left: 50%;
-  bottom: 0.2rem;
-  font-size: 0.5rem;
-  margin-left: -0.25rem;
-  animation: fadeInUp 1s infinite both;
+.van-popup {
+  background-color: unset;
 }
 
 /* #animate */
@@ -137,5 +133,30 @@ img {
   25%,
   75% {
     opacity: 1;
+  }
+}
+.am--zoomIn {
+  animation-name: am--zoomIn;
+}
+@keyframes am--zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.3, 0.3);
+  }
+  to {
+    opacity: 1;
+  }
+}
+.am--fadeInUp {
+  animation-name: am--fadeInUp;
+}
+@keyframes am--fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate(0, 100%);
+  }
+  to {
+    opacity: 1;
+    transform: none;
   }
 }
