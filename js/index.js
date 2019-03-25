@@ -1,5 +1,5 @@
 // 设置全局 rem
-window.onresize = function() {
+window.onresize = () => {
   document.documentElement.style.fontSize = document.documentElement.clientWidth / 6.4 + 'px';
 };
 onresize();
@@ -7,45 +7,46 @@ onresize();
 // 禁用 touchmove
 document.body.addEventListener(
   'touchmove',
-  function(e) {
+  e => {
     e.preventDefault();
   },
   { passive: false }
 );
 
 // 自动播放音乐
-(function() {
-  let audio = document.getElementById('music');
+{
+  const audio = document.getElementById('music');
   audio.play();
   document.addEventListener(
     'WeixinJSBridgeReady',
-    function() {
+    () => {
       audio.play();
     },
     false
   );
   document.addEventListener(
     'YixinJSBridgeReady',
-    function() {
+    () => {
       audio.play();
     },
     false
   );
-})();
+}
 
 // 音乐控制按钮
 function toggleMusic(el) {
-  let audio = document.getElementById('music');
+  const audio = document.getElementById('music'),
+    list = el.classList;
   if (audio.paused) {
     audio.play();
-    if (el.classList) el.classList.add('i-music-on');
+    if (list) list.add('i-music-on');
     else el.className += ' i-music-on';
-    el.classList.remove('i-music-off');
+    list.remove('i-music-off');
   } else {
     audio.pause();
-    if (el.classList) el.classList.add('i-music-off');
+    if (list) list.add('i-music-off');
     else el.className += ' i-music-off';
-    el.classList.remove('i-music-on');
+    list.remove('i-music-on');
   }
 }
 
