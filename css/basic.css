@@ -64,6 +64,9 @@ img {
   height: 100%;
   overflow: hidden;
 }
+.page--load {
+  background-color: #fff;
+}
 .iconfont {
   font-size: unset;
 }

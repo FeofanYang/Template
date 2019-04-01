@@ -22,9 +22,11 @@
       </transition>
 
       <!-- 加载页 -->
-      <van-popup v-model="bLoadV" :close-on-click-overlay="false" :overlay-style="{backgroundColor:'#fff'}">
-        <van-circle v-model="nLoadNum" :text="nLoadNum.toFixed(0) + '%'" :rate="0"></van-circle>
-      </van-popup>
+      <transition name="fade">
+        <div v-show="bLoadV" class="page--load">
+          <van-circle v-model="nLoadNum" class="el--center el--middle" :text="nLoadNum.toFixed(0) + '%'" :rate="0"></van-circle>
+        </div>
+      </transition>
     </div>
 
     <audio src="media/music.mp3" id="music" preload autoplay loop></audio>
