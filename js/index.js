@@ -70,10 +70,18 @@ var h5 = new Vue({
       this.nLoadNum = parseInt(e.progress * 100);
     });
     queue.on('fileload', target => {
+      let id = target.item.id,
+        src = target.item.src + '?t=' + new Date().getTime();
       if (target.item.type === 'image') {
-        this.oImg[target.item.id] = {
-          id: target.item.id,
-          src: target.item.src,
+        if (id.indexOf('/') != -1) {
+          id = src
+            .split('/')
+            .pop()
+            .split('.')[0];
+        }
+        this.oImg[id] = {
+          id,
+          src,
           width: target.result.width,
           height: target.result.height
         };
