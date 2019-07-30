@@ -6,39 +6,42 @@
     <meta name="format-detection" content="telephone=no" />
     <title></title>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6/dist/vue.js"></script>
-    <link rel="stylesheet" href="//at.alicdn.com/t/font_853029_kqhquv0gxj.css" />
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_853029_wm5ur761rz.css" />
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3/animate.min.css" /> -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vant@1/lib/index.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vant@2/lib/index.min.css" />
     <link rel="stylesheet" href="css/basic.css" />
     <script>
-      document.write("<link rel='stylesheet' href='css/index.css?t=" + new Date().getTime() + "' />");
+      let globalTimestamp = new Date().getTime();
+      document.write("<link rel='stylesheet' href='css/index.css?t=" + globalTimestamp + "' />");
     </script>
   </head>
 
   <body>
     <div id="h5">
       <!-- 首页 -->
-      <transition name="fade">
-        <div v-show="bIndexV" class="page--index"></div>
+      <transition name="van-fade">
+        <div v-show="bIndexV" class="pageIndex">
+          <!-- <base-img :img="oImg."></base-img> -->
+        </div>
       </transition>
 
       <!-- 加载页 -->
-      <transition name="fade">
-        <div v-show="bLoadV" class="page--load">
-          <van-circle v-model="nLoadNum" class="el--center el--middle" :text="nLoadNum.toFixed(0) + '%'" :rate="0"></van-circle>
+      <transition name="van-fade">
+        <div v-show="bLoadV" class="pageLoad">
+          <van-circle v-model="nLoadPercent" class="elCenter elMiddle" :text="nLoadPercent.toFixed(0)+'%'" :rate="0"></van-circle>
         </div>
       </transition>
     </div>
 
     <audio src="media/music.mp3" id="music" preload autoplay loop></audio>
-    <button class="btn--music iconfont i-music-on" onclick="toggleMusic(this)"></button>
+    <button class="btnMusic iconfont i-music-on" onclick="toggleMusic(this)"></button>
 
     <script src="https://cdn.jsdelivr.net/npm/preloadjs@1/lib/preloadjs.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios@0/dist/axios.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vant@1/lib/vant.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vant@2/lib/vant.min.js"></script>
     <script src="js/components.js"></script>
     <script>
-      document.write("<script src='js/index.js?t=" + new Date().getTime() + "'><\/script>");
+      document.write("<script src='js/index.js?t=" + globalTimestamp + "'><\/script>");
     </script>
   </body>
 </html>

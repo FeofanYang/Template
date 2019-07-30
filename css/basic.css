@@ -1,4 +1,47 @@
-/* #reset */
+/* —— 通用 —— */
+.elCenter {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+.elMiddle {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+.elCenter.elMiddle {
+  transform: translate(-50%, -50%);
+}
+
+/* —— 动画 —— */
+.myFlash {
+  animation-name: myFlash;
+}
+@keyframes myFlash {
+  0%,
+  50%,
+  100% {
+    opacity: 0;
+  }
+  25%,
+  75% {
+    opacity: 1;
+  }
+}
+.myZoomIn {
+  animation-name: myZoomIn;
+}
+@keyframes myZoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.3, 0.3);
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* —— reset —— */
 * {
   margin: 0;
   padding: 0;
@@ -56,110 +99,13 @@ img {
   border: 0;
 }
 
-/* #basic */
-[class*='page--'] {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-.page--load {
-  background-color: #fff;
-}
-.iconfont {
-  font-size: unset;
-}
-.btn--music {
-  position: absolute;
-  left: 0.2rem;
-  bottom: 0.2rem;
-  font-size: 0.5rem;
-  z-index: 2;
-}
-.btn--arrow {
-  position: absolute;
-  left: 50%;
-  bottom: 0.2rem;
-  font-size: 0.5rem;
-  margin-left: -0.25rem;
-  animation: am--fadeInUp 1s infinite both;
-}
-
-/* common */
-.el--center {
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%, 0);
-}
-.el--middle {
-  position: absolute;
-  top: 50%;
-  transform: translate(0, -50%);
-}
-.el--center.el--middle {
-  transform: translate(-50%, -50%);
-}
-.ellipsis {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-/* #vue */
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s;
-}
-.fade-enter,
-.fade-leave-to {
-  opacity: 0;
-}
-
+/* —— fix —— */
 .van-dialog__header {
   padding: 15px;
 }
 .van-popup {
   background-color: unset;
 }
-
-/* #animate */
-.am--flash {
-  animation-name: am--flash;
-}
-@keyframes am--flash {
-  0%,
-  50%,
-  100% {
-    opacity: 0;
-  }
-  25%,
-  75% {
-    opacity: 1;
-  }
-}
-.am--zoomIn {
-  animation-name: am--zoomIn;
-}
-@keyframes am--zoomIn {
-  from {
-    opacity: 0;
-    transform: scale(0.3, 0.3);
-  }
-  to {
-    opacity: 1;
-  }
-}
-.am--fadeInUp {
-  animation-name: am--fadeInUp;
-}
-@keyframes am--fadeInUp {
-  from {
-    opacity: 0;
-    transform: translate(0, 100%);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
+.iconfont {
+  font-size: unset;
 }

@@ -7,8 +7,18 @@ onresize();
 // 禁用 touchmove
 document.body.addEventListener(
   'touchmove',
-  e => {
-    e.preventDefault();
+  el => {
+    let doNotMove = true,
+      target = el.target,
+      res = [];
+    while (target.tagName != 'BODY') {
+      res.push(target);
+      target = target.parentNode;
+    }
+    for (let i = 0; i < res.length; i++) {
+      if (res[i].className.indexOf('scrollItem') > -1) doNotMove = false;
+    }
+    if (doNotMove) el.preventDefault();
   },
   { passive: false }
 );
@@ -56,7 +66,7 @@ var h5 = new Vue({
   data: {
     oImg: {},
     bLoadV: true,
-    nLoadNum: 0,
+    nLoadPercent: 0,
     bIndexV: false
   },
   mounted() {
@@ -66,29 +76,23 @@ var h5 = new Vue({
       { src: 'media/music.mp3' }
     ];
     queue.loadManifest(manifest);
-    queue.on('progress', e => {
-      this.nLoadNum = parseInt(e.progress * 100);
+    queue.on('progress', el => {
+      this.nLoadPercent = parseInt(el.progress * 100);
     });
-    queue.on('fileload', target => {
-      let id = target.item.id,
-        src = target.item.src + '?t=' + new Date().getTime();
-      if (target.item.type === 'image') {
+    queue.on('fileload', el => {
+      let id = el.item.id,
+        src = el.item.src + '?t=' + globalTimestamp;
+      if (el.item.type === 'image') {
         if (id.indexOf('/') != -1) {
           id = src
             .split('/')
             .pop()
             .split('.')[0];
         }
-        this.oImg[id] = {
-          id,
-          src,
-          width: target.result.width,
-          height: target.result.height
-        };
+        this.oImg[id] = { id, src, width: el.result.width, height: el.result.height };
       }
     });
     queue.on('complete', () => {
-      // 显示首页
       this.bLoadV = false;
       this.bIndexV = true;
     });
@@ -96,14 +100,14 @@ var h5 = new Vue({
   methods: {
     inputRepair: function() {
       let timer,
-        pos,
+        position,
         distance = 1;
       timer = setInterval(function() {
-        pos = document.documentElement.scrollTop || document.body.scrollTop;
-        pos -= distance;
-        window.scrollTo(0, pos);
-        pos += distance;
-        window.scrollTo(0, pos);
+        position = document.documentElement.scrollTop || document.body.scrollTop;
+        position -= distance;
+        window.scrollTo(0, position);
+        position += distance;
+        window.scrollTo(0, position);
         clearInterval(timer);
       }, 1);
       console.log('repair done');
