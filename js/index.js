@@ -7,7 +7,7 @@ onresize();
 // 禁用 touchmove
 document.body.addEventListener(
   'touchmove',
-  el => {
+  (el) => {
     let doNotMove = true,
       target = el.target,
       res = [];
@@ -67,27 +67,25 @@ var h5 = new Vue({
     oImg: {},
     bLoadV: true,
     nLoadPercent: 0,
-    bIndexV: false
+    bIndexV: false,
   },
   mounted() {
-    let queue = new createjs.LoadQueue();
+    let queue = new createjs.LoadQueue(false);
     let manifest = [
       // 所有需要预加载的资源
-      { src: 'media/music.mp3' }
+      { src: 'images/logo.png' },
+      { src: 'media/music.mp3' },
     ];
     queue.loadManifest(manifest);
-    queue.on('progress', el => {
+    queue.on('progress', (el) => {
       this.nLoadPercent = parseInt(el.progress * 100);
     });
-    queue.on('fileload', el => {
+    queue.on('fileload', (el) => {
       let id = el.item.id,
-        src = el.item.src + '?t=' + globalTimestamp;
+        src = el.item.src;
       if (el.item.type === 'image') {
         if (id.indexOf('/') != -1) {
-          id = src
-            .split('/')
-            .pop()
-            .split('.')[0];
+          id = src.split('/').pop().split('.')[0];
         }
         this.oImg[id] = { id, src, width: el.result.width, height: el.result.height };
       }
@@ -98,11 +96,11 @@ var h5 = new Vue({
     });
   },
   methods: {
-    inputRepair: function() {
+    inputRepair: function () {
       let timer,
         position,
         distance = 1;
-      timer = setInterval(function() {
+      timer = setInterval(function () {
         position = document.documentElement.scrollTop || document.body.scrollTop;
         position -= distance;
         window.scrollTo(0, position);
@@ -111,6 +109,6 @@ var h5 = new Vue({
         clearInterval(timer);
       }, 1);
       console.log('repair done');
-    }
-  }
+    },
+  },
 });

@@ -19,7 +19,6 @@
 }
 @keyframes myFlash {
   0%,
-  50%,
   100% {
     opacity: 0;
   }
@@ -102,9 +101,6 @@ img {
 /* —— fix —— */
 .van-dialog__header {
   padding: 15px;
-}
-.van-popup {
-  background-color: unset;
 }
 .iconfont {
   font-size: unset;
