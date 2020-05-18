@@ -49,14 +49,14 @@ function toggleMusic(el) {
     list = el.classList;
   if (audio.paused) {
     audio.play();
-    if (list) list.add('i-music-on');
-    else el.className += ' i-music-on';
-    list.remove('i-music-off');
+    if (list) list.add('van-icon-music');
+    else el.className += ' van-icon-music';
+    list.remove('van-icon-music-o');
   } else {
     audio.pause();
-    if (list) list.add('i-music-off');
-    else el.className += ' i-music-off';
-    list.remove('i-music-on');
+    if (list) list.add('van-icon-music-o');
+    else el.className += ' van-icon-music-o';
+    list.remove('van-icon-music');
   }
 }
 
@@ -84,9 +84,7 @@ var h5 = new Vue({
       let id = el.item.id,
         src = el.item.src;
       if (el.item.type === 'image') {
-        if (id.indexOf('/') != -1) {
-          id = src.split('/').pop().split('.')[0];
-        }
+        if (id.indexOf('/') != -1) id = src.split('/').pop().split('.')[0];
         this.oImg[id] = { id, src, width: el.result.width, height: el.result.height };
       }
     });
@@ -95,20 +93,5 @@ var h5 = new Vue({
       this.bIndexV = true;
     });
   },
-  methods: {
-    inputRepair: function () {
-      let timer,
-        position,
-        distance = 1;
-      timer = setInterval(function () {
-        position = document.documentElement.scrollTop || document.body.scrollTop;
-        position -= distance;
-        window.scrollTo(0, position);
-        position += distance;
-        window.scrollTo(0, position);
-        clearInterval(timer);
-      }, 1);
-      console.log('repair done');
-    },
-  },
+  methods: {},
 });

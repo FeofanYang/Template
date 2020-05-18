@@ -6,7 +6,6 @@
     <meta name="format-detection" content="telephone=no" />
     <title></title>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6/dist/vue.js"></script>
-    <link rel="stylesheet" href="//at.alicdn.com/t/font_853029_wm5ur761rz.css" />
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3/animate.min.css" /> -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vant@2/lib/index.min.css" />
     <link rel="stylesheet" href="css/basic.css" />
@@ -22,16 +21,18 @@
         </div>
       </transition>
 
+      <!-- 音乐按钮 -->
+      <van-icon name="music" size="0.5rem" style="position: absolute; left: 0.2rem; bottom: 0.2rem;" onclick="toggleMusic(this)"></van-icon>
+
       <!-- 加载页 -->
       <transition name="van-fade">
-        <div v-show="bLoadV" class="pageLoad">
-          <van-circle v-model="nLoadPercent" class="elCenter elMiddle" :text="nLoadPercent.toFixed(0)+'%'" :rate="0"></van-circle>
+        <div v-show="bLoadV" class="pageLoad" style="background-color: #fff;">
+          <van-circle v-model="nLoadPercent" class="elCenter elMiddle" :text="nLoadPercent.toFixed(0)+'%'" rate="0"></van-circle>
         </div>
       </transition>
     </div>
 
     <audio src="media/music.mp3" id="music" preload autoplay loop></audio>
-    <button class="btnMusic iconfont i-music-on" onclick="toggleMusic(this)"></button>
 
     <script src="https://cdn.jsdelivr.net/npm/preloadjs@1/lib/preloadjs.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios@0/dist/axios.min.js"></script>
